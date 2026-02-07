@@ -1,14 +1,17 @@
-// src/main.jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
-import RouterWrapper from './utils/RouterWrapper.jsx'; // Import the new wrapper
-import './index.css'; 
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import "./index.css"
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import { AuthProvider } from "./context/AuthContext.jsx"
+import { EventProvider } from "./context/EventContext.jsx"
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router> 
-        <RouterWrapper /> 
-    </Router>
+    <AuthProvider>
+      <EventProvider>
+        <App />
+      </EventProvider>
+    </AuthProvider>
   </React.StrictMode>
-);
+)

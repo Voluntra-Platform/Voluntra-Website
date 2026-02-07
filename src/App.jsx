@@ -1,65 +1,55 @@
-import { Suspense } from 'react';
-import { Route, Routes } from "react-router-dom";
-import Welcome from "./pages/Welcome";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import AuthPage from "./pages/AuthPage";
-import VolunteerDashboard from "./features/volunteer/Dashboard";
-import NGODashboard from './features/ngo/Dashboard';
-import CorporateDashboard from './features/corporate/Dashboard';
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import AddEventPage from './features/ngo/AddEventPage.jsx';
-import EventListPage from './features/ngo/EventListPage.jsx';
-import EditEventPage from './features/ngo/EditEventPage.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-// import NotFound from "./pages/NotFound"; 
-import './App.css';
+import Home from "./pages/Home"
+import Auth from "./pages/Auth"
 
-// Reusable Layout Component
-function Layout({ children }) {
-    return (
-        <div className="min-h-screen">
-            {children}
-        </div>
-    );
-}
+import NgoDashboard from "./dashboards/NgoDashboard"
+import VolunteerDashboard from "./dashboards/VolunteerDashboard"
+import CorporateDashboard from "./dashboards/CorporateDashboard"
+
+import ProtectedRoute from "./components/ProtectedRoute"
+import Layout from "./components/Layout"
 
 function App() {
-    return (
-        <Layout>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    {/* --- Public Routes --- */}
-                    <Route path="/" element={<Welcome />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/login" element={<AuthPage />} />
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<Auth />} />
 
-                    {/* --- Secured/Role-Based Dashboard Routes --- */}
-                    
-                    {/* Volunteer Dashboard - Access via /dashboard/volunteer */}
-                    <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
-                        <Route path="/dashboard/volunteer" element={<VolunteerDashboard />} />
-                    </Route>
+          {/* Protected routes */}
+          <Route
+            path="/ngo"
+            element={
+              <ProtectedRoute allowedRole="ngo">
+                <NgoDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-                    {/* NGO Dashboard - Access via /dashboard/ngo */}
-                    <Route element={<ProtectedRoute allowedRoles={['ngo']} />}>
-                        <Route path="/dashboard/ngo" element={<NGODashboard />} />
-                        <Route path="/dashboard/ngo/events/add" element={<AddEventPage />} />
-                        <Route path="/dashboard/ngo/events/list" element={<EventListPage />} />
-                        <Route path="/dashboard/ngo/events/edit/:id" element={<EditEventPage />} />
-                    </Route>
+          <Route
+            path="/volunteer"
+            element={
+              <ProtectedRoute allowedRole="volunteer">
+                <VolunteerDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-                    {/* Corporate Dashboard - Access via /dashboard/corporate */}
-                    <Route element={<ProtectedRoute allowedRoles={['corporate']} />}>
-                        <Route path="/dashboard/corporate" element={<CorporateDashboard />} />
-                    </Route>
-                    
-                    {/* <Route path="*" element={<NotFound />} /> */}
-                </Routes>
-            </Suspense>
-        </Layout>
-    );
+          <Route
+            path="/corporate"
+            element={
+              <ProtectedRoute allowedRole="corporate">
+                <CorporateDashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
