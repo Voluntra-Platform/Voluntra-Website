@@ -1,48 +1,45 @@
 import { createContext, useState, useEffect } from "react"
-import { getEvents, saveEvents } from "../services/eventService"
 
 export const EventContext = createContext()
 
 export function EventProvider({ children }) {
-  const [events, setEvents] = useState(() => getEvents())
+  const [events, setEvents] = useState(() => {
+    const stored = localStorage.getItem("events")
+    return stored ? JSON.parse(stored) : []
+  })
 
   useEffect(() => {
-    saveEvents(events)
+    localStorage.setItem("events", JSON.stringify(events))
   }, [events])
 
   const addEvent = (event) => {
-    setEvents((prev) => [
-      ...prev,
-      { ...event, registered: false, sponsored: false }
-    ])
+    setEvents([...events, { ...event, id: Date.now() }])
   }
 
-  const updateEvent = (index, updatedEvent) => {
-    setEvents((prev) =>
-      prev.map((event, i) =>
-        i === index ? { ...event, ...updatedEvent } : event
-      )
-    )
+  const registerForEvent = (id) => {
+    setEvents(events.map(e =>
+      e.id === id ? { ...e, registered: true } : e
+    ))
   }
 
-  const deleteEvent = (index) => {
-    setEvents((prev) => prev.filter((_, i) => i !== index))
+  const requestSponsorship = (id, sponsorship) => {
+    setEvents(events.map(e =>
+      e.id === id
+        ? {
+            ...e,
+            sponsorship,
+            sponsorshipStatus: "pending"
+          }
+        : e
+    ))
   }
 
-  const registerForEvent = (index) => {
-    setEvents((prev) =>
-      prev.map((event, i) =>
-        i === index ? { ...event, registered: true } : event
-      )
-    )
-  }
-
-  const sponsorEvent = (index) => {
-    setEvents((prev) =>
-      prev.map((event, i) =>
-        i === index ? { ...event, sponsored: true } : event
-      )
-    )
+  const approveSponsorship = (id) => {
+    setEvents(events.map(e =>
+      e.id === id
+        ? { ...e, sponsorshipStatus: "approved" }
+        : e
+    ))
   }
 
   return (
@@ -50,10 +47,9 @@ export function EventProvider({ children }) {
       value={{
         events,
         addEvent,
-        updateEvent,
-        deleteEvent,
         registerForEvent,
-        sponsorEvent,
+        requestSponsorship,
+        approveSponsorship
       }}
     >
       {children}

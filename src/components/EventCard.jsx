@@ -1,28 +1,17 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { EventContext } from "../context/EventContext.jsx"
 import AuthContext from "../context/AuthContext.jsx"
+import SponsorModal from "./SponsorModal.jsx"
 
-function EventCard({ event, index }) {
-  const { registerForEvent, sponsorEvent } = useContext(EventContext)
+function EventCard({ event }) {
+  const { registerForEvent } = useContext(EventContext)
   const { user } = useContext(AuthContext)
+  const [showModal, setShowModal] = useState(false)
 
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-lg transition p-5 relative">
-      {/* Status badges */}
-      <div className="absolute top-3 right-3 flex gap-2">
-        {event.registered && (
-          <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
-            Registered
-          </span>
-        )}
-        {event.sponsored && (
-          <span className="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">
-            Sponsored
-          </span>
-        )}
-      </div>
+    <div className="bg-white rounded-lg shadow p-5">
 
-      <h3 className="text-lg font-semibold mb-1">
+      <h3 className="text-lg font-semibold">
         {event.title}
       </h3>
 
@@ -30,40 +19,47 @@ function EventCard({ event, index }) {
         {event.date} • {event.location}
       </p>
 
-      <p className="text-gray-700 mt-3 mb-4">
+      <p className="mt-3 text-gray-700">
         {event.description}
       </p>
 
-      {/* Volunteer */}
-      {user?.role === "volunteer" && (
-        event.registered ? (
-          <button className="btn btn-disabled" disabled>
-            Registered
-          </button>
-        ) : (
-          <button
-            onClick={() => registerForEvent(index)}
-            className="btn btn-primary"
-          >
-            Register
-          </button>
-        )
-      )}
-
-      {/* Corporate */}
+      {/* CORPORATE VIEW */}
       {user?.role === "corporate" && (
-        event.sponsored ? (
-          <button className="btn btn-disabled" disabled>
-            Sponsored
-          </button>
-        ) : (
-          <button
-            onClick={() => sponsorEvent(index)}
-            className="btn btn-secondary"
-          >
-            Sponsor
-          </button>
-        )
+        <>
+          {!event.sponsorshipStatus && (
+            <>
+              <button
+                onClick={() => setShowModal(true)}
+                className="btn btn-secondary"
+              >
+                Sponsor
+              </button>
+
+              {showModal && (
+                <SponsorModal
+                  eventId={event.id}
+                  onClose={() => setShowModal(false)}
+                />
+              )}
+            </>
+          )}
+
+          {event.sponsorshipStatus === "pending" && (
+            <span className="text-yellow-600 font-semibold">
+              Sponsorship Pending Approval
+            </span>
+          )}
+
+          {event.sponsorshipStatus === "approved" && (
+            <div className="mt-3 bg-blue-50 p-3 rounded">
+              <p className="font-semibold text-blue-700">
+                Sponsored (Approved)
+              </p>
+              <p>Amount: ₹{event.sponsorship.amount}</p>
+              <p>Type: {event.sponsorship.type}</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   )
