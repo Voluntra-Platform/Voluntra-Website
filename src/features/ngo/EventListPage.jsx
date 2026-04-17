@@ -72,12 +72,12 @@ const EventListPage = () => {
         <div className="p-8">
             <button
                 onClick={() => navigate('/dashboard/ngo')}
-                className="flex items-center text-gray-600 hover:text-[#D4AF37] mb-6 font-medium"
+                className="flex items-center text-gray-600 hover:text-brand-gold mb-6 font-medium"
             >
                 <ChevronLeft size={18} className="mr-2" /> Back to Dashboard
             </button>
 
-            <h1 className="text-3xl font-bold text-[#0D1B2A] mb-4">All Managed Events ({events.length})</h1>
+            <h1 className="text-3xl font-bold text-brand-navy mb-4">All Managed Events ({events.length})</h1>
             <p className="text-gray-600 mb-8">View, edit, or publish events created by your organization.</p>
             
             <div className="bg-white p-8 rounded-xl shadow-2xl">
@@ -89,7 +89,7 @@ const EventListPage = () => {
                         <p className="font-semibold text-gray-700">No events created yet.</p>
                         <button
                             onClick={() => navigate('/dashboard/ngo/events/add')}
-                            className="mt-4 px-4 py-2 bg-[#D4AF37] text-[#0D1B2A] rounded-lg font-medium hover:bg-yellow-600 transition"
+                            className="mt-4 px-4 py-2 bg-brand-gold text-brand-navy rounded-lg font-medium hover:bg-yellow-600 transition"
                         >
                             Create First Event
                         </button>
@@ -100,7 +100,7 @@ const EventListPage = () => {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {events.map((event) => (
                                 <tr key={event.id}>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0D1B2A]">{event.title}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-brand-navy">{event.title}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(event.date).toLocaleDateString()}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${event.is_published ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

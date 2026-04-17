@@ -12,7 +12,7 @@ import AddEventPage from './features/ngo/AddEventPage.jsx';
 import EventListPage from './features/ngo/EventListPage.jsx';
 import EditEventPage from './features/ngo/EditEventPage.jsx';
 
-// import NotFound from "./pages/NotFound"; 
+import NotFound from "./pages/NotFound";
 import './App.css';
 
 // Reusable Layout Component
@@ -55,7 +55,7 @@ function App() {
                         <Route path="/dashboard/corporate" element={<CorporateDashboard />} />
                     </Route>
                     
-                    {/* <Route path="*" element={<NotFound />} /> */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
         </Layout>

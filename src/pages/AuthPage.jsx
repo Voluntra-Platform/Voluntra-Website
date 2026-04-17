@@ -6,13 +6,14 @@ import { FaEnvelope, FaLock, FaUser, FaArrowRight, FaUndo } from "react-icons/fa
 // Reusable Input Component (Moved outside AuthPage)
 const InputField = ({ icon, type, placeholder, value, onChange, required = true, isDisabled = false }) => (
     <div className="relative mb-4">
-        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500" aria-hidden="true">
             {icon}
         </span>
         <input
             type={type}
             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
             placeholder={placeholder}
+            aria-label={placeholder}
             value={value}
             onChange={onChange}
             required={required}

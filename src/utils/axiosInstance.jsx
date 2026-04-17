@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api',
+    baseURL: import.meta.env.VITE_API_URL,
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ axiosInstance.interceptors.response.use(
 
             if (refresh) {
                 try {
-                    const res = await axios.post("http://127.0.0.1:8000/api/auth/jwt/refresh/", { refresh });
+                    const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/jwt/refresh/`, { refresh });
                     const newAccess = res.data.access;
 
                     localStorage.setItem("access_token", newAccess);
