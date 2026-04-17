@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext.jsx"; // Import context
 import { DollarSign, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom"; // Need this for redirection
 
-const DonationForm = () => {
+const DonationForm = ({ ngoId = 1 }) => {
     // Get authenticated axios instance and user data
     const { user, axiosInstance } = useAuth();
     const navigate = useNavigate(); // For redirecting unauthenticated users
@@ -44,7 +44,7 @@ const DonationForm = () => {
         const payload = {
             amount: parseFloat(amount),
             is_anonymous: isAnonymous,
-            ngo: 1, // HARDCODED: Still needs a real NGO ID (e.g., ID 1)
+            ngo: ngoId,
         };
 
         try {

@@ -15,8 +15,7 @@ const ProtectedRoute = ({ allowedRoles }) => {
     }
 
     // If the user has the required role
-    const userRole = user.role; 
-    console.log("User Role:", userRole);
+    const userRole = user.role;
     if (allowedRoles && !allowedRoles.includes(userRole)) {
         // If logged in but unauthorized, redirecting to the welcome page
         return <Navigate to="/home" replace />; 

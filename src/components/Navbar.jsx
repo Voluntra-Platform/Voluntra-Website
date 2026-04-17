@@ -1,11 +1,12 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", path: "/home" },
@@ -40,8 +41,8 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          <button className="text-white hover:text-[#D4AF37] transition-colors">Sign In</button>
-          <button className="bg-[#D4AF37] text-[#0D1B2A] px-4 py-2 rounded-lg hover:bg-[#C19B20] transition-colors font-semibold">
+          <button onClick={() => navigate('/login')} className="text-white hover:text-[#D4AF37] transition-colors">Sign In</button>
+          <button onClick={() => navigate('/login')} className="bg-[#D4AF37] text-[#0D1B2A] px-4 py-2 rounded-lg hover:bg-[#C19B20] transition-colors font-semibold">
             Register
           </button>
         </div>
@@ -71,12 +72,12 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="px-8 py-3">
-                <button className="text-[#D4AF37] hover:text-white transition-colors w-full text-left">
+                <button onClick={() => { navigate('/login'); setIsMenuOpen(false); }} className="text-[#D4AF37] hover:text-white transition-colors w-full text-left">
                   Sign In
                 </button>
               </li>
               <li className="px-8 py-3">
-                <button className="bg-[#D4AF37] text-[#0D1B2A] px-4 py-2 rounded-lg hover:bg-[#C19B20] transition-colors w-full">
+                <button onClick={() => { navigate('/login'); setIsMenuOpen(false); }} className="bg-[#D4AF37] text-[#0D1B2A] px-4 py-2 rounded-lg hover:bg-[#C19B20] transition-colors w-full">
                   Register
                 </button>
               </li>
