@@ -1,6 +1,7 @@
 // src/features/ngo/AddEventPage.jsx
 import React, { useState } from 'react';
-import { ChevronLeft, Calendar, Clock, MapPin, CheckCircle, XCircle, PlusCircle } from 'lucide-react';
+import { ChevronLeft, Calendar, Clock, MapPin, PlusCircle } from 'lucide-react';
+import StatusMessage from '../../components/StatusMessage.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx'; 
 
@@ -70,20 +71,6 @@ const AddEventPage = () => {
         }
     };
 
-    const renderStatusMessage = () => {
-        if (!status) return null;
-        
-        const Icon = status.type === 'success' ? CheckCircle : XCircle;
-        const colorClass = status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
-
-        return (
-            <div className={`p-4 rounded-lg mb-6 flex items-center font-medium ${colorClass}`}>
-                <Icon size={20} className="mr-3" />
-                <span>{status.message}</span>
-            </div>
-        );
-    };
-
     return (
         // Container for centering and styling
         <div className="min-h-screen flex justify-center w-full" style={{ backgroundColor: '#E5E5E5' }}> 
@@ -105,7 +92,7 @@ const AddEventPage = () => {
                 {/* Form Card (White Background, Shadow) */}
                 <div className="bg-white p-8 rounded-xl shadow-2xl max-w-2xl mx-auto">
                     
-                    {renderStatusMessage()}
+                    <StatusMessage status={status} />
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         

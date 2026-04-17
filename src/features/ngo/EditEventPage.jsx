@@ -1,6 +1,7 @@
 // src/features/ngo/EditEventPage.jsx
-import React, { useState, useEffect } from 'react'; 
-import { ChevronLeft, Calendar, Clock, MapPin, CheckCircle, XCircle, Edit, Loader } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, Calendar, Clock, MapPin, Edit, Loader } from 'lucide-react';
+import StatusMessage from '../../components/StatusMessage.jsx';
 import { useNavigate, useParams } from 'react-router-dom'; 
 import { useAuth } from '../../context/AuthContext.jsx'; 
 
@@ -106,20 +107,6 @@ const EditEventPage = () => {
         }
     };
 
-    const renderStatusMessage = () => {
-        if (!status) return null;
-        
-        const Icon = status.type === 'success' ? CheckCircle : XCircle;
-        const colorClass = status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
-
-        return (
-            <div className={`p-4 rounded-lg mb-6 flex items-center font-medium ${colorClass}`}>
-                <Icon size={20} className="mr-3" />
-                <span>{status.message}</span>
-            </div>
-        );
-    };
-
     if (apiError) {
         return <div className="p-8 text-center text-red-700 min-h-screen">Error: {apiError}</div>;
     }
@@ -150,7 +137,7 @@ const EditEventPage = () => {
                          </div>
                     ) : (
                         <>
-                            {renderStatusMessage()}
+                            <StatusMessage status={status} />
 
                             <form onSubmit={handleSubmit} className="space-y-5">
                                 

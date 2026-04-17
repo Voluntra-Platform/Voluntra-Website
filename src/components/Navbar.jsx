@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -8,12 +8,12 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: "Home", path: "/home" },
     { name: "About Us", path: "/about" },
     { name: "Events", path: "/events" },
     { name: "Contact Us", path: "/contact" },
-  ];
+  ], []);
 
   return (
     <nav className="shadow-md sticky top-0 z-50 w-full" style={{ backgroundColor: "#0D1B2A" }}>

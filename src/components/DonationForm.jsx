@@ -1,8 +1,9 @@
 // src/components/DonationForm.jsx 
 
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext.jsx"; // Import context
+import { useAuth } from "../context/AuthContext.jsx";
 import { DollarSign, Send } from "lucide-react";
+import StatusMessage from "./StatusMessage.jsx";
 import { useNavigate } from "react-router-dom"; // Need this for redirection
 
 const DonationForm = ({ ngoId = 1 }) => {
@@ -70,32 +71,13 @@ const DonationForm = ({ ngoId = 1 }) => {
         }
     };
 
-    const renderStatusMessage = () => {
-        if (status === 'success') {
-            return (
-                <p className="p-3 bg-green-100 text-green-700 rounded-lg mb-4 font-semibold">
-                    ✅ Thank you! Your donation was recorded successfully.
-                </p>
-            );
-        }
-        if (status && status !== 'success') {
-            return (
-                <p className="p-3 bg-red-100 text-red-700 rounded-lg mb-4">
-                    ❌ Error: {status}
-                </p>
-            );
-        }
-        return null;
-    };
-
-
     return (
         <div className="max-w-md mx-auto p-6 bg-white shadow-xl rounded-xl">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
                 <DollarSign className="w-6 h-6 mr-3 text-green-500" /> Make a Contribution
             </h3>
             
-            {renderStatusMessage()}
+            <StatusMessage status={status} successMessage="Thank you! Your donation was recorded successfully." errorPrefix="Error: " />
 
             {/* Display logged-in donor status */}
             <p className="text-sm mb-4 p-2 rounded" style={{backgroundColor: '#E5E5E5'}}>

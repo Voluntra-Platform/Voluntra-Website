@@ -1,21 +1,8 @@
-import React, { useState } from "react";
-import { Mail, MessageCircle, Menu, X } from "lucide-react";
-import Navbar from "../components/Navbar"; // import Navbar
-
+import React from "react";
+import { Mail, MessageCircle } from "lucide-react";
+import Navbar from "../components/Navbar";
 
 const WelcomePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Add CSS reset for full viewport coverage
-  React.useEffect(() => {
-    document.body.style.margin = '0';
-    document.body.style.padding = '0';
-    document.body.style.width = '100vw';
-    document.body.style.overflowX = 'hidden';
-    document.documentElement.style.margin = '0';
-    document.documentElement.style.padding = '0';
-  }, []);
-
   return (
     <div className="relative min-h-screen w-full flex flex-col text-gray-800 overflow-x-hidden" style={{backgroundColor: '#E5E5E5'}}>
       {/* Navbar */}

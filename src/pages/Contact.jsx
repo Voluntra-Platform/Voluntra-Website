@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, MessageCircle, Send, Clock, Users } from "lucide-react";
 import Navbar from "../components/Navbar";
-import axios from "../utils/axiosInstance"; 
+import axios from "../utils/axiosInstance";
+import StatusMessage from "../components/StatusMessage.jsx";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -52,25 +53,6 @@ const ContactPage = () => {
     } finally {
         setLoading(false);
     }
-  };
-
-// --- Status Renderer Function ---
-  const renderStatusMessage = () => {
-    if (status === 'success') {
-        return (
-            <p className="p-3 bg-green-100 text-green-700 rounded-lg mb-4 font-semibold">
-                ✅ Success! Thank you for your message.
-            </p>
-        );
-    }
-    if (status && status !== 'success') { // If status is an error message string
-        return (
-            <p className="p-3 bg-red-100 text-red-700 rounded-lg mb-4">
-                ❌ Submission Failed: {status}
-            </p>
-        );
-    }
-    return null;
   };
 
   return (
@@ -145,8 +127,7 @@ const ContactPage = () => {
             <div className="p-8 rounded-lg shadow-md" style={{backgroundColor: '#FFFFFF'}}>
               <h3 className="text-2xl font-bold mb-6" style={{color: '#0D1B2A'}}>Send us a Message</h3>
               
-              {/* DYNAMIC STATUS MESSAGE RENDERED HERE */}
-              {renderStatusMessage()} 
+              <StatusMessage status={status} successMessage="Success! Thank you for your message." errorPrefix="Submission Failed: " />
 
               {/* Form Tag added and linked to submission handler */}
               <form onSubmit={handleSubmit} className="space-y-6"> 
