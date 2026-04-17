@@ -1,9 +1,9 @@
 import { Home, LogOut } from "lucide-react";
 
 const DashboardSidebar = ({ navItems, activeTab, onTabChange, username, onHome, onSignOut, homeInNav = false }) => (
-    <aside className="w-64 bg-[#0D1B2A] text-white flex flex-col p-4 shadow-xl">
+    <aside className="w-64 bg-brand-navy text-white flex flex-col p-4 shadow-xl">
         <div className="flex items-center justify-between mb-8">
-            <h1 className="text-2xl font-bold" style={{ color: "#D4AF37" }}>Voluntra</h1>
+            <h1 className="text-2xl font-bold text-brand-gold">Voluntra</h1>
         </div>
 
         {username && (
@@ -21,8 +21,8 @@ const DashboardSidebar = ({ navItems, activeTab, onTabChange, username, onHome, 
                             onClick={() => onTabChange(id)}
                             className={`w-full flex items-center p-3 rounded-lg font-medium transition-colors ${
                                 activeTab === id
-                                    ? "bg-[#112A3C] text-[#D4AF37] border-r-4 border-[#D4AF37]"
-                                    : "text-gray-300 hover:bg-[#112A3C] hover:text-[#D4AF37]"
+                                    ? "bg-brand-navy-light text-brand-gold border-r-4 border-brand-gold"
+                                    : "text-gray-300 hover:bg-brand-navy-light hover:text-brand-gold"
                             }`}
                         >
                             <Icon size={18} className="mr-3" />
@@ -34,7 +34,7 @@ const DashboardSidebar = ({ navItems, activeTab, onTabChange, username, onHome, 
                     <li>
                         <button
                             onClick={onHome}
-                            className="w-full flex items-center p-3 rounded-lg font-medium text-gray-300 hover:bg-[#112A3C] hover:text-white transition-colors"
+                            className="w-full flex items-center p-3 rounded-lg font-medium text-gray-300 hover:bg-brand-navy-light hover:text-white transition-colors"
                         >
                             <Home size={18} className="mr-3" />
                             <span>Home</span>
@@ -48,7 +48,7 @@ const DashboardSidebar = ({ navItems, activeTab, onTabChange, username, onHome, 
             {!homeInNav && (
                 <button
                     onClick={onHome}
-                    className="w-full flex items-center p-3 rounded-lg font-medium text-gray-300 hover:bg-[#112A3C] hover:text-white transition-colors"
+                    className="w-full flex items-center p-3 rounded-lg font-medium text-gray-300 hover:bg-brand-navy-light hover:text-white transition-colors"
                 >
                     <Home size={18} className="mr-3" />
                     <span>Home</span>

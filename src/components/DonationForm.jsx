@@ -80,7 +80,7 @@ const DonationForm = ({ ngoId = 1 }) => {
             <StatusMessage status={status} successMessage="Thank you! Your donation was recorded successfully." errorPrefix="Error: " />
 
             {/* Display logged-in donor status */}
-            <p className="text-sm mb-4 p-2 rounded" style={{backgroundColor: '#E5E5E5'}}>
+            <p className="text-sm mb-4 p-2 rounded bg-brand-gray">
                 Donor: {user.username} ({user.role})
             </p>
 
@@ -114,8 +114,7 @@ const DonationForm = ({ ngoId = 1 }) => {
                 
                 <button
                     type="submit"
-                    className="w-full flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
-                    style={{backgroundColor: '#D4AF37', color: '#0D1B2A'}}
+                    className="w-full flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-brand-gold text-brand-navy hover:bg-brand-gold-dark"
                     disabled={loading || !amount}
                 >
                     <Send className="mr-2 w-4 h-4" />

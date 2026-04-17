@@ -7,22 +7,22 @@ import DashboardSidebar from '../../components/DashboardSidebar.jsx';
 
 const EventsContent = ({ navigate }) => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Manage Events</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Manage Events</h3>
         <p className="text-gray-600 mb-6">Create, edit, and track all your organization's events.</p>
         <div className="space-y-4">
             <div
                 onClick={() => navigate('/dashboard/ngo/events/add')}
                 className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
             >
-                <PlusCircle size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">Add New Event</p>
+                <PlusCircle size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">Add New Event</p>
             </div>
             <div
                 onClick={() => navigate('/dashboard/ngo/events/list')}
                 className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
             >
-                <Calendar size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">View All Events</p>
+                <Calendar size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">View All Events</p>
             </div>
         </div>
     </div>
@@ -30,16 +30,16 @@ const EventsContent = ({ navigate }) => (
 
 const VolunteersContent = () => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Manage Volunteers</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Manage Volunteers</h3>
         <p className="text-gray-600 mb-6">View and manage your registered volunteers and their activities.</p>
         <div className="space-y-4">
             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                <Users size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">View Volunteer List</p>
+                <Users size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">View Volunteer List</p>
             </div>
             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                <BarChart2 size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">Volunteer Statistics</p>
+                <BarChart2 size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">Volunteer Statistics</p>
             </div>
         </div>
     </div>
@@ -47,16 +47,16 @@ const VolunteersContent = () => (
 
 const DonationsContent = () => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Track Donations</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Track Donations</h3>
         <p className="text-gray-600 mb-6">Monitor your fundraising campaigns and donation history.</p>
         <div className="space-y-4">
             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                <DollarSign size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">Donation Reports</p>
+                <DollarSign size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">Donation Reports</p>
             </div>
             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                <Info size={24} className="text-[#0D1B2A]" />
-                <p className="text-[#0D1B2A] font-semibold">View Campaigns</p>
+                <Info size={24} className="text-brand-navy" />
+                <p className="text-brand-navy font-semibold">View Campaigns</p>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@ const NGODashboard = () => {
     ], []);
 
     const stats = useMemo(() => [
-        { value: "45", label: "Events Created", icon: Calendar, color: "text-[#D4AF37]" },
+        { value: "45", label: "Events Created", icon: Calendar, color: "text-brand-gold" },
         { value: "500", label: "Volunteers Registered", icon: Users, color: "text-green-500" },
         { value: "$12,500", label: "Funds Raised", icon: DollarSign, color: "text-purple-500" },
     ], []);
@@ -98,7 +98,7 @@ const NGODashboard = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#E5E5E5]">
+        <div className="flex min-h-screen bg-brand-gray">
             <DashboardSidebar
                 navItems={navItems}
                 activeTab={activeTab}
@@ -110,7 +110,7 @@ const NGODashboard = () => {
 
             <main className="flex-1 p-6 md:p-10 overflow-auto">
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-[#0D1B2A] mb-2">
+                    <h1 className="text-4xl font-bold text-brand-navy mb-2">
                         Welcome back, {user ? user.first_name || user.username : 'NGO Admin'}! 👋
                     </h1>
                     <p className="text-lg text-gray-600">Track and manage your organization's activities</p>
@@ -124,7 +124,7 @@ const NGODashboard = () => {
                                     <Icon size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-3xl font-bold text-[#0D1B2A]">{value}</h3>
+                                    <h3 className="text-3xl font-bold text-brand-navy">{value}</h3>
                                     <p className="text-gray-600 font-medium">{label}</p>
                                 </div>
                             </div>

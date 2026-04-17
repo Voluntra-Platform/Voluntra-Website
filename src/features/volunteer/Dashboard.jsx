@@ -53,18 +53,18 @@ const VolunteerDashboard = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#E5E5E5] p-4">
+      <div className="min-h-screen flex items-center justify-center bg-brand-gray p-4">
         <div className="bg-white rounded-2xl shadow-xl p-8 text-center max-w-md w-full">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-[#0D1B2A] mb-2">Something went wrong</h2>
+          <h2 className="text-2xl font-bold text-brand-navy mb-2">Something went wrong</h2>
           <p className="text-gray-600 mb-6">{error}</p>
           <button
             onClick={() => navigate("/")}
-            className="bg-[#D4AF37] hover:bg-[#C19B20] text-[#0D1B2A] px-6 py-3 rounded-lg font-semibold transition-colors"
+            className="bg-brand-gold hover:bg-brand-gold-dark text-brand-navy px-6 py-3 rounded-lg font-semibold transition-colors"
           >
             Return Home
           </button>
@@ -75,10 +75,10 @@ const VolunteerDashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#E5E5E5]">
+      <div className="min-h-screen flex items-center justify-center bg-brand-gray">
         <div className="text-center">
           <div className="w-20 h-20 border-4 border-[#0D1B2A]/30 rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-lg font-semibold text-[#0D1B2A]">Loading your dashboard...</p>
+          <p className="mt-4 text-lg font-semibold text-brand-navy">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -90,11 +90,11 @@ const VolunteerDashboard = () => {
         return (
           <div className="space-y-6">
             <div className="bg-white rounded-lg shadow p-8">
-              <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Ongoing Events</h3>
+              <h3 className="text-2xl font-semibold text-brand-navy mb-4">Ongoing Events</h3>
               <p className="text-gray-600">You don't have any ongoing volunteer activities.</p>
             </div>
             <div className="bg-white rounded-lg shadow p-8">
-              <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Upcoming Events</h3>
+              <h3 className="text-2xl font-semibold text-brand-navy mb-4">Upcoming Events</h3>
               <p className="text-gray-600">Stay tuned for exciting volunteer opportunities!</p>
             </div>
           </div>
@@ -102,14 +102,14 @@ const VolunteerDashboard = () => {
       case "history":
         return (
           <div className="bg-white rounded-lg shadow p-8">
-            <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-6">Your Volunteer History</h3>
+            <h3 className="text-2xl font-semibold text-brand-navy mb-6">Your Volunteer History</h3>
             <table className="w-full">
               <thead>
                 <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-6 text-[#0D1B2A]">Event</th>
-                  <th className="text-left py-4 px-6 text-[#0D1B2A]">Date</th>
-                  <th className="text-left py-4 px-6 text-[#0D1B2A]">Hours</th>
-                  <th className="text-left py-4 px-6 text-[#0D1B2A]">Certificate</th>
+                  <th className="text-left py-4 px-6 text-brand-navy">Event</th>
+                  <th className="text-left py-4 px-6 text-brand-navy">Date</th>
+                  <th className="text-left py-4 px-6 text-brand-navy">Hours</th>
+                  <th className="text-left py-4 px-6 text-brand-navy">Certificate</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -119,15 +119,15 @@ const VolunteerDashboard = () => {
                   { event: "Food Distribution", date: "10 Jul 2024", hours: "4" }
                 ].map((item, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition">
-                    <td className="py-4 px-6 font-semibold text-[#0D1B2A]">{item.event}</td>
+                    <td className="py-4 px-6 font-semibold text-brand-navy">{item.event}</td>
                     <td className="py-4 px-6 text-gray-600">{item.date}</td>
                     <td className="py-4 px-6">
-                      <span className="bg-[#E5E5E5] text-[#0D1B2A] px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-brand-gray text-brand-navy px-3 py-1 rounded-full text-sm font-medium">
                         {item.hours}h
                       </span>
                     </td>
                     <td className="py-4 px-6">
-                      <button className="flex items-center space-x-2 bg-[#0D1B2A] hover:bg-[#112A3C] text-white px-4 py-2 rounded-lg font-medium transition">
+                      <button className="flex items-center space-x-2 bg-brand-navy hover:bg-brand-navy-light text-white px-4 py-2 rounded-lg font-medium transition">
                         <Download size={16} />
                         <span>Download</span>
                       </button>
@@ -146,7 +146,7 @@ const VolunteerDashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#E5E5E5]">
+    <div className="flex min-h-screen bg-brand-gray">
       <DashboardSidebar
         navItems={navItems}
         activeTab={activeTab}
@@ -158,7 +158,7 @@ const VolunteerDashboard = () => {
 
       <main className="flex-1 p-6 md:p-10 overflow-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-[#0D1B2A] mb-2">
+          <h1 className="text-4xl font-bold text-brand-navy mb-2">
             Welcome back, {user ? user.first_name || user.username : 'Volunteer'}! 👋
           </h1>
           <p className="text-lg text-gray-600">Here's your volunteer journey so far</p>
@@ -168,11 +168,11 @@ const VolunteerDashboard = () => {
           {stats.map(({ value, label, icon: Icon }, i) => (
             <div key={i} className="bg-white rounded-lg shadow hover:shadow-lg p-6 transition-all duration-300">
               <div className="flex items-center space-x-4">
-                <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-[#0D1B2A]">
-                  <Icon className="text-[#D4AF37]" size={24} />
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center bg-brand-navy">
+                  <Icon className="text-brand-gold" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-[#0D1B2A]">{value}</h3>
+                  <h3 className="text-3xl font-bold text-brand-navy">{value}</h3>
                   <p className="text-gray-600 font-medium">{label}</p>
                 </div>
               </div>
@@ -190,21 +190,21 @@ const VolunteerDashboard = () => {
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full text-center">
-            <div className="w-16 h-16 bg-[#0D1B2A] rounded-lg flex items-center justify-center mx-auto mb-6">
-              <User className="text-[#D4AF37]" size={32} />
+            <div className="w-16 h-16 bg-brand-navy rounded-lg flex items-center justify-center mx-auto mb-6">
+              <User className="text-brand-gold" size={32} />
             </div>
-            <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">Complete Your Profile</h2>
+            <h2 className="text-2xl font-bold text-brand-navy mb-3">Complete Your Profile</h2>
             <p className="text-gray-600 mb-8">Help us personalize your volunteer experience by completing your profile.</p>
             <div className="space-y-3">
               <button
                 onClick={handleNavigateProfile}
-                className="w-full bg-[#D4AF37] hover:bg-[#C19B20] text-[#0D1B2A] px-6 py-3 rounded-lg font-semibold transition"
+                className="w-full bg-brand-gold hover:bg-brand-gold-dark text-brand-navy px-6 py-3 rounded-lg font-semibold transition"
               >
                 Complete Profile
               </button>
               <button
                 onClick={handleClosePopup}
-                className="w-full bg-gray-100 hover:bg-gray-200 text-[#0D1B2A] px-6 py-3 rounded-lg font-semibold transition"
+                className="w-full bg-gray-100 hover:bg-gray-200 text-brand-navy px-6 py-3 rounded-lg font-semibold transition"
               >
                 Maybe Later
               </button>

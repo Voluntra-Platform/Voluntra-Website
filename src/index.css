@@ -1,4 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #0D1B2A;
+  --color-brand-navy-light: #112A3C;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-dark: #C19B20;
+  --color-brand-gray: #E5E5E5;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

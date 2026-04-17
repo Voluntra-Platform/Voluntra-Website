@@ -8,21 +8,21 @@ import DashboardSidebar from '../../components/DashboardSidebar.jsx';
 
 const EventsContent = () => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Your Events</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Your Events</h3>
         <p className="text-gray-600 mb-6">View and manage your corporate events and volunteer campaigns.</p>
     </div>
 );
 
 const VolunteersContent = () => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Employee Volunteers</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Employee Volunteers</h3>
         <p className="text-gray-600 mb-6">Monitor employee participation and volunteer hours.</p>
     </div>
 );
 
 const ReportingContent = () => (
     <div className="bg-white rounded-lg shadow p-8">
-        <h3 className="text-2xl font-semibold text-[#0D1B2A] mb-4">Reporting & Analytics</h3>
+        <h3 className="text-2xl font-semibold text-brand-navy mb-4">Reporting & Analytics</h3>
         <p className="text-gray-600 mb-6">Generate and download reports on your social impact.</p>
     </div>
 );
@@ -47,7 +47,7 @@ const CorporateDashboard = () => {
     ], []);
 
     const stats = useMemo(() => [
-        { value: "3", label: "Active Campaigns", icon: Calendar, color: "text-[#D4AF37]" },
+        { value: "3", label: "Active Campaigns", icon: Calendar, color: "text-brand-gold" },
         { value: "452", label: "Employee Volunteers", icon: Users, color: "text-green-500" },
         { value: "1,200", label: "Hours Logged", icon: BarChart2, color: "text-purple-500" },
     ], []);
@@ -63,7 +63,7 @@ const CorporateDashboard = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#E5E5E5]">
+        <div className="flex min-h-screen bg-brand-gray">
             <DashboardSidebar
                 navItems={navItems}
                 activeTab={activeTab}
@@ -75,7 +75,7 @@ const CorporateDashboard = () => {
 
             <main className="flex-1 p-6 md:p-10 overflow-auto">
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-[#0D1B2A] mb-2">
+                    <h1 className="text-4xl font-bold text-brand-navy mb-2">
                         Welcome back, {user ? user.first_name || user.username : 'Corporate Admin'}! 👋
                     </h1>
                     <p className="text-lg text-gray-600">Track your company's social impact</p>
@@ -89,7 +89,7 @@ const CorporateDashboard = () => {
                                     <Icon size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-3xl font-bold text-[#0D1B2A]">{value}</h3>
+                                    <h3 className="text-3xl font-bold text-brand-navy">{value}</h3>
                                     <p className="text-gray-600 font-medium">{label}</p>
                                 </div>
                             </div>
